@@ -5,8 +5,8 @@ async function run() {
   const connection = new Connection({
     // // Connect to localhost with default ConnectionOptions.
     // // In production, pass options to the Connection constructor to configure TLS and other settings:
-    // address: 'foo.bar.tmprl.cloud', // as provisioned
-    // tls: {} // as provisioned
+    address: 'temporal-j1w3.onrender.com:443', // as provisioned
+    tls: true
   }); 
 
   const client = new WorkflowClient(connection.service, {

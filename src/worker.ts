@@ -1,9 +1,14 @@
-import { Worker } from '@temporalio/worker';
+// @@@SNIPSTART typescript-hello-worker
+import { Worker, Core } from '@temporalio/worker';
 import * as activities from './activities';
 
 async function run() {
-  // Step 1: Register Workflows and Activities with the Worker and connect to
-  // the Temporal server.
+  await Core.install({
+    serverOptions: {
+      address: 'temporal-j1w3.onrender.com:443', // defaults port to 7233 if not specified
+      tls: true
+    },
+  });
   const worker = await Worker.create({
     workflowsPath: require.resolve('./workflows'),
     activities,
